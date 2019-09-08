@@ -8,4 +8,4 @@ docker run \
   --volume="$PWD:/myapp" \
   --volume="$PWD/vendor:/usr/local/bundle" \
   -p 3000:3000 \
-  christopherfujino/peas-budget:latest
+  christopherfujino/peas-budget-dev:latest
