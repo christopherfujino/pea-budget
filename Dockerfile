@@ -3,6 +3,7 @@ FROM ruby:2.7.0-preview1-buster
 RUN apt-get update -qq && \
   apt-get install -y nodejs \
     postgresql-client \
+    less \
     yarnpkg && \
   apt-get clean
 
