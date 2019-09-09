@@ -18,9 +18,7 @@ RUN groupadd budget-user -g "$GROUP_ID"
 RUN useradd -r -u "$USER_ID" -g "$GROUP_ID" --create-home budget-user
 
 # Add a script to handle locally installing dependencies
-COPY dev-entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/dev-entrypoint.sh
-ENTRYPOINT ["dev-entrypoint.sh"]
+ENTRYPOINT ["/myapp/dev-entrypoint.sh"]
 
 WORKDIR /myapp
 EXPOSE 3000
