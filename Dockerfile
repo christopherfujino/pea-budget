@@ -16,11 +16,6 @@ VOLUME ["/myapp", "/usr/local/bundle"]
 
 RUN groupadd budget-user -g "$GROUP_ID"
 RUN useradd -r -u "$USER_ID" -g "$GROUP_ID" --create-home budget-user
-#RUN mkdir /myapp
-#COPY Gemfile /myapp/Gemfile
-#COPY Gemfile.lock /myapp/Gemfile.lock
-#RUN bundle install
-#COPY . /myapp
 
 # Add a script to handle locally installing dependencies
 COPY dev-entrypoint.sh /usr/bin/
