@@ -37,5 +37,4 @@ EXPOSE 3000
 USER budget-user
 
 # Start the main process.
-#CMD ["rails", "server", "-b", "0.0.0.0"]
-CMD ["/bin/bash"]
+CMD ["rails", "server", "-b", "0.0.0.0"]

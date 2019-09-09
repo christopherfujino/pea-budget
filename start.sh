@@ -8,4 +8,5 @@ docker run \
   --volume="$PWD:/home/budget-user/myapp" \
   --volume="$PWD/vendor:/usr/local/bundle" \
   -p 3000:3000 \
-  christopherfujino/peas-budget-dev:latest
+  christopherfujino/peas-budget-dev:latest \
+  "$@"
