@@ -12,14 +12,10 @@ RUN apt-get update -qq && \
 
 RUN ["ln", "-s", "/usr/bin/yarnpkg", "/usr/bin/yarn"]
 
-RUN mkdir "/home/budget-user"
+VOLUME ["/myapp", "/usr/local/bundle"]
 
-VOLUME ["/home/budget-user/myapp", "/usr/local/bundle"]
-
-RUN groupadd budget-user
-RUN useradd -r -u "$USER_ID" -g "$GROUP_ID" budget-user
-RUN chown "$USER_ID":"$GROUP_ID" /home/budget-user
-#RUN chown "$USER_ID":"$GROUP_ID" -R /home/budget-user/myapp
+RUN groupadd budget-user -g "$GROUP_ID"
+RUN useradd -r -u "$USER_ID" -g "$GROUP_ID" --create-home budget-user
 #RUN mkdir /myapp
 #COPY Gemfile /myapp/Gemfile
 #COPY Gemfile.lock /myapp/Gemfile.lock
@@ -31,7 +27,7 @@ COPY dev-entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/dev-entrypoint.sh
 ENTRYPOINT ["dev-entrypoint.sh"]
 
-WORKDIR /home/budget-user/myapp
+WORKDIR /myapp
 EXPOSE 3000
 
 USER budget-user
