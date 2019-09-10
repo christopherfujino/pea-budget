@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    image: christopherfujino/peas-budget-dev:latest
+    volumes:
+      - .:/myapp
+      - ./vendor:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
