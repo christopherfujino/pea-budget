@@ -10,8 +10,8 @@ services:
     tty: true
     image: christopherfujino/peas-budget-dev:latest
     volumes:
-      - .:/myapp
-      - ./vendor:/usr/local/bundle
+      - ./rails:/myapp
+      - ./rails/vendor:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
