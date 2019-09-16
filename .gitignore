@@ -39,5 +39,5 @@
 /rails/yarn-debug.log*
 /rails/.yarn-integrity
 
-# global tmp
-/tmp
+# For Postgres dir
+/postgres/tmp/*
