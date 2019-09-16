@@ -1,14 +1,18 @@
 version: '3'
 services:
   db:
-    image: postgres
+    build:
+      context: ./postgres/
+    image: christopherfujino/postgres-dev:latest
     volumes:
-      - ./postgres/tmp/db:/var/lib/postgresql/data
+      - ./postgres/local_data:/var/lib/postgresql/data
   web:
+    build:
+      context: ./rails/
+    image: christopherfujino/peas-budget-dev:latest
     command: /bin/bash
     stdin_open: true
     tty: true
-    image: christopherfujino/peas-budget-dev:latest
     volumes:
       - ./rails:/myapp
       - ./rails/vendor:/usr/local/bundle

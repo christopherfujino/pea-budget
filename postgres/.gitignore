@@ -1,2 +1,4 @@
 /tmp/*
 !/tmp/.keep
+/local_data/*
+!/local_data/.keep
