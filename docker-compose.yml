@@ -1,12 +1,13 @@
 version: '3'
 services:
-  db:
+  postgres:
     build:
       context: ./postgres/
     image: christopherfujino/postgres-dev:latest
+    #image: postgres:12
     volumes:
       - ./postgres/local_data:/var/lib/postgresql/data
-  web:
+  rails:
     build:
       context: ./rails/
     image: christopherfujino/peas-budget-dev:latest
@@ -19,4 +20,4 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - postgres
