@@ -1,15 +1,10 @@
 version: '3'
 services:
   postgres:
-    build:
-      context: ./postgres/
-    image: christopherfujino/postgres-dev:latest
-    #image: postgres:12
+    image: postgres:12
     volumes:
       - ./postgres/local_data:/var/lib/postgresql/data
   rails:
-    build:
-      context: ./rails/
     image: christopherfujino/peas-budget-dev:latest
     command: /bin/bash
     stdin_open: true
