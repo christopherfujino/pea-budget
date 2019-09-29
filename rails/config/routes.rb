@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'transactions/new'
   get 'transactions/create'
-  get 'transactions/index'
+  get 'transactions', to: 'transactions#index'
   get 'transactions/update'
   get 'transactions/destroy'
   get 'transactions/show'
