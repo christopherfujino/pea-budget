@@ -1,0 +1,14 @@
+h1 Account
+p
+  | Back to&nbsp;
+  = link_to('Accounts', accounts_path)
+  | .
+table.table
+  thead
+    tr
+      th ID
+      th Name
+  tbody
+    tr
+      td = @account.id
+      td = @account.name
