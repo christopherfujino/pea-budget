@@ -11,12 +11,11 @@ table.table
       th ID
       th Account
       th Upload Date
-      th
+      th Delete
   - @csvs.each do |csv|
-    - account = Account.find(csv.account_id)
     tbody
       tr
-        td = link_to(csv.id, csvs_show_path(csv))
-        td = link_to(account.name, accounts_show_path(account))
+        td = link_to(csv.id, csvs_show_path(csv)) if csv.csv_file.attached?
+        td = link_to(csv.account.name, accounts_show_path(csv.account))
         td = csv.created_at
         td = link_to('Delete', csvs_destroy_path(csv), method: :delete, class: 'btn btn-warning')

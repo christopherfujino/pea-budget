@@ -6,5 +6,8 @@ h1 Upload a CSV
         = csv.label :account_id
       .col-sm-6
         = csv.select :account_id, @accounts.map {|a| [a.name, a.id]}, class: 'form-control'
+    .row
+      .col-sm-12
+        = csv.file_field :csv_file
   .form-group
     = csv.submit('Upload', class: 'btn btn-primary')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_042910) do
+ActiveRecord::Schema.define(version: 2019_09_29_070610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 2019_09_29_042910) do
   create_table "csvs", force: :cascade do |t|
     t.integer "account_id"
     t.datetime "upload_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.datetime "transaction_date"
+    t.datetime "post_date"
+    t.string "description"
+    t.integer "category"
+    t.integer "type"
+    t.float "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

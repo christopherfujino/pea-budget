@@ -5,7 +5,7 @@ class CsvsController < ApplicationController
   end
 
   def create
-    csv = Csv.create(params.require(:csv).permit(:account_id))
+    csv = Csv.create!(params.require(:csv).permit(:account_id, :csv_file))
     redirect_to action: :show, csv_id: csv.id
   end
 
@@ -24,5 +24,8 @@ class CsvsController < ApplicationController
 
   def show
     @csv = Csv.find(params[:csv_id])
+    @csv_string = @csv.csv_file.download
+    @csv_matrix = CSV.parse(@csv_string)
+    print(@csv_matrix)
   end
 end
