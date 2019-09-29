@@ -1,6 +1,10 @@
 h1 Accounts
 p Find me in app/views/accounts/index.slim
-ul.list-group
+table.table
+  tr
+    th Account Name
+    th Has Headers?
   - @accounts.each do |a|
-    li.list-group-item
-      = link_to(a.name, accounts_show_path(a))
+    tr
+      td = link_to(a.name, accounts_show_path(a))
+      td = a.has_headers
