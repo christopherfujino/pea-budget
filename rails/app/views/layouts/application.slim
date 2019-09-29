@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= Myapp
+    title Pea's Budget
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -15,9 +15,11 @@ html
 
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      = link_to 'PeasBudget', '/', class: 'navbar-brand'
-      /a.navbar-brand Navbar
-      button.navbar-toggler type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      = link_to('PeasBudget', root_path, class: 'navbar-brand')
+      /button.navbar-toggler type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
         span.navbar-toggler-icon
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          = link_to('Accounts', accounts_path, class: 'nav-link')
     .container
       = yield
