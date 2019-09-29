@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'csvs/new'
   post 'csvs/create'
   get 'csvs', to: 'csvs#index'
+  get 'csvs/:csv_id', to: 'csvs#show', as: 'csvs_show'
   patch 'csvs/:csv_id', to: 'csvs#update'
-  delete 'csvs/:csv_id', to: 'csvs#destroy'
-  get 'csvs/:csv_id'
+  delete 'csvs/:csv_id', to: 'csvs#destroy', as: 'csvs_destroy'
 
   post 'accounts/create'
   get 'accounts', to: 'accounts#index'

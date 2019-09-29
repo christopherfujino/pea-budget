@@ -1,0 +1,22 @@
+h1 CSVs
+p Count: #{@csvs.count}
+ul.nav
+  li.nav-item
+    = link_to('overview', csvs_path, class: 'nav-link')
+  li.nav-item
+    = link_to('new', csvs_new_path, class: 'nav-link')
+table.table
+  thead
+    tr
+      th ID
+      th Account
+      th Upload Date
+      th
+  - @csvs.each do |csv|
+    - account = Account.find(csv.account_id)
+    tbody
+      tr
+        td = link_to(csv.id, csvs_show_path(csv))
+        td = link_to(account.name, accounts_show_path(account))
+        td = csv.created_at
+        td = link_to('Delete', csvs_destroy_path(csv), method: :delete, class: 'btn btn-warning')

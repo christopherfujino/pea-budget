@@ -1,0 +1,10 @@
+h1 Upload a CSV
+= form_for @csv, url: csvs_create_path do |csv|
+  .form-group
+    .row
+      .col-sm-6
+        = csv.label :account_id
+      .col-sm-6
+        = csv.select :account_id, @accounts.map {|a| [a.name, a.id]}, class: 'form-control'
+  .form-group
+    = csv.submit('Upload', class: 'btn btn-primary')
