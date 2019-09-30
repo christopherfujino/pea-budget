@@ -24,7 +24,9 @@ class Csv < ApplicationRecord
   def process_transactions
     matrix.each do |transaction|
       transaction.each do |item|
-        puts item
+        #Transaction.create(
+        #  csv: self,
+        #)
       end
     end
     true
