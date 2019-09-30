@@ -11,6 +11,7 @@
 
 class Csv < ApplicationRecord
   belongs_to :account
+  has_many :transactions
   has_one_attached :csv_file
 
   after_create :process_transactions
