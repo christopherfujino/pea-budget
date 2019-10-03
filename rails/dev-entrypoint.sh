@@ -1,6 +1,7 @@
 #!/bin/bash
 
 bundle install
+bundle exec annotate
 yarn install
 
 PID_FILE='./tmp/pids/server.pid'
