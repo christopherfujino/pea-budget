@@ -1,10 +1,6 @@
+= render 'header'
 h1 CSVs
 p Count: #{@csvs.count}
-ul.nav
-  li.nav-item
-    = link_to('overview', csvs_path, class: 'nav-link')
-  li.nav-item
-    = link_to('new', csvs_new_path, class: 'nav-link')
 table.table
   thead
     tr

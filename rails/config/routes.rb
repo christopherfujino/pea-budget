@@ -14,6 +14,7 @@
 #                             csvs_show GET    /csvs/:csv_id(.:format)                                                                  csvs#show
 #                                       PATCH  /csvs/:csv_id(.:format)                                                                  csvs#update
 #                          csvs_destroy DELETE /csvs/:csv_id(.:format)                                                                  csvs#destroy
+#                          accounts_new GET    /accounts/new(.:format)                                                                  accounts#new
 #                       accounts_create POST   /accounts/create(.:format)                                                               accounts#create
 #                              accounts GET    /accounts(.:format)                                                                      accounts#index
 #                         accounts_show GET    /accounts/:account_id(.:format)                                                          accounts#show
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
   patch 'csvs/:csv_id', to: 'csvs#update'
   delete 'csvs/:csv_id', to: 'csvs#destroy', as: 'csvs_destroy'
 
+  get 'accounts/new'
   post 'accounts/create'
   get 'accounts', to: 'accounts#index'
   get 'accounts/:account_id', to: 'accounts#show', as: 'accounts_show'
