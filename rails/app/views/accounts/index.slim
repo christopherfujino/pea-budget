@@ -4,7 +4,10 @@ table.table
   tr
     th Account Name
     th No. of CSV Headers
+    th Fields
   - @accounts.each do |a|
     tr
       td = link_to(a.name, accounts_show_path(a))
       td = a.csv_headers_count
+      - fields = a.fields.map {|i| Transaction::FIELDS_LOOKUP[i.to_i].to_s.humanize}
+      td = fields.join(', ')

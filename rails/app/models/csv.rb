@@ -22,12 +22,18 @@ class Csv < ApplicationRecord
   end
 
   def process_transactions
+    matrix.shift(account.csv_headers_count) if account.csv_headers_count.present?
     matrix.each do |transaction|
-      transaction.each do |item|
-        #Transaction.create(
-        #  csv: self,
-        #)
+      fields = {
+        csv: self,
+      }
+      transaction.each_with_index do |item, index|
+        field_integer = account.fields[index].to_i
+        field_symbol = Transaction::FIELDS_LOOKUP[field_integer]
+        fields[field_symbol] = item
       end
+      puts fields
+      Transaction.string_constructor(fields)
     end
     true
   end

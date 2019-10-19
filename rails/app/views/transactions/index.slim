@@ -1,2 +1,24 @@
 h1 Transactions
 p Transaction count: #{@transactions.count}
+table.table
+  tr
+    th CSV
+    th Account
+    th Transaction Date
+    th Post Date
+    th Description
+    th Amount
+    th Category
+    th Type
+    th Raw
+  - @transactions.each do |t|
+    tr
+      td = link_to(t.csv_id, csvs_show_path(t.csv))
+      td = link_to(t.csv.account.name, accounts_show_path(t.csv.account))
+      td = t.transaction_date
+      td = t.post_date
+      td = t.description
+      td = t.amount
+      td = Transaction::CATEGORIES_LOOKUP[t.category].to_s.humanize
+      td = t.transaction_type
+      td = t.raw

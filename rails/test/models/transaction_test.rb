@@ -7,8 +7,9 @@
 #  category         :integer
 #  description      :string
 #  post_date        :date
+#  raw              :string
 #  transaction_date :date
-#  type             :integer
+#  transaction_type :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  csv_id           :integer
