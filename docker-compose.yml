@@ -4,6 +4,9 @@ services:
     image: postgres:12
     volumes:
       - ./postgres/local_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
   rails:
     image: christopherfujino/peas-budget-dev:latest
     command: /bin/bash
