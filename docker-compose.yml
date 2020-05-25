@@ -9,7 +9,6 @@ services:
     restart: always
   rails:
     image: christopherfujino/peas-budget-dev:latest
-    command: /bin/bash
     stdin_open: true
     tty: true
     volumes:
