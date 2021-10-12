@@ -16,14 +16,14 @@ class TransactionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map<Widget>((Transaction transaction) {
-        return Row(
-          children: _callbacks.map<Widget>((Function cb) {
-            return cb(transaction);
-          }).toList(),
-        );
-      }).toList(),
+    return GridView.count(
+      crossAxisCount: _callbacks.length,
+      children: <Widget>[
+        for (final Transaction transaction in transactions)
+          ..._callbacks
+              .map<Widget>((Widget Function(Transaction) cb) => cb(transaction))
+              .toList(),
+      ],
     );
   }
 }
