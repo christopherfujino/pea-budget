@@ -3,8 +3,8 @@ import 'package:pea_budget_core/pea_budget.dart';
 void main() {
   final InterestAction interest = InterestAction(
     name: '2% interest',
-    amount: 0.02,
-    interval: Duration(days: 365),
+    rate: 0.02,
+    numPeriods: 4,
   );
   final FinancialState state = FinancialState(
     accounts: <Account>[
@@ -24,6 +24,6 @@ void main() {
   final Printer printer = Printer();
 
   final FinancialState finishedState = simulator.simulate();
-  printer.visitFinancialState(finishedState);
+  finishedState.accept(printer);
   print(printer.toString());
 }

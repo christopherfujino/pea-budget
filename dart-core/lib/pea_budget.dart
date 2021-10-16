@@ -162,16 +162,19 @@ abstract class Action<P> {
 
 class InterestAction extends Action<Account> {
   InterestAction({
-    required this.amount,
-    required this.interval,
+    required this.rate,
+    required this.numPeriods,
     String? name,
-  })  : assert(amount >= 0 && amount <= 1),
+  })  : assert(rate >= 0 && rate <= 1),
         super(
-          name: name ?? '${amount * 100}% interest',
+          name: name ?? '${rate * 100}% interest',
         );
 
-  final double amount;
-  final Duration interval;
+  final double rate;
+  final int numPeriods;
+  double get ratePerPeriod => rate / numPeriods;
+  Duration get interval => const Duration(days: 365) ~/ numPeriods;
+
   Duration sinceLastExecution = Duration.zero;
 
   void run({
@@ -189,12 +192,10 @@ class InterestAction extends Action<Account> {
         parent.history.add(
           Transaction(
             date: currentTime,
-            description: 'Apply ${amount * 100}% interest for $name',
-            amount: parent.balance * amount,
+            description: 'Apply ${ratePerPeriod * 100}% interest for $name',
+            amount: parent.balance * ratePerPeriod,
           ),
         );
-        print(parent.name);
-        print(parent.history.transactions.length);
       } while (sinceLastExecution >= interval);
     }
   }
